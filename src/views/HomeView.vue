@@ -16,8 +16,10 @@ onMounted(async () => {
     <h2>Top 100 podcasts en Tecnología</h2>
     <ul>
       <li v-for="(podcast, index) in podcasts" :key="podcast['im:name'].label">
-        {{ index + 1 }}. {{ podcast['im:name' ].label }}
-       
+        {{ index + 1 }} {{ podcast['im:name'].label }}
+        {{ index + 1 }} {{ podcast['im:artist'].label }}
+    <img :src="podcast['im:image'][0]['label']" alt="Podcast Image">
+  
       </li>
     </ul>
   </div>
@@ -25,3 +27,4 @@ onMounted(async () => {
     <p>Cargando podcasts...</p>
   </div>
 </template>
+<style scoped lang="scss"> </style>
