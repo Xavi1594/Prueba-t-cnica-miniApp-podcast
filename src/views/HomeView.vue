@@ -27,4 +27,6 @@ onMounted(async () => {
     <p>Cargando podcasts...</p>
   </div>
 </template>
-<style scoped lang="scss"> </style>
+<style scoped lang="scss"> 
+
+</style>
