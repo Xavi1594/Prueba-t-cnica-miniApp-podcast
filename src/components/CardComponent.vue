@@ -1,4 +1,11 @@
 <script setup>
+import { stringify } from 'querystring';
+
+const props =  defineProps ({
+  name: string,
+  artist: string,
+  img: string
+})
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 <script setup>
 import usePodcastService from '../services/PodcastService';
 import { ref, onMounted } from 'vue';
+import CardComponent from '../components/CardComponent.vue';
 
 const { getPodcasts } = usePodcastService();
 
@@ -26,6 +27,11 @@ onMounted(async () => {
   <div v-else>
     <p>Cargando podcasts...</p>
   </div>
+  <CardComponent>
+    :name=" {{ index + 1 }} {{ podcast['im:name'].label }}",
+    :author=" {{ index + 1 }} {{ podcast['im:artist'].label }}",
+    :image="podcast['im:image'][0]['label']" alt="Podcast Image">
+  </CardComponent>
 </template>
 <style scoped lang="scss"> 
 
