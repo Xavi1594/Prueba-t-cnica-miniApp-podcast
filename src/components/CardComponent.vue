@@ -1,29 +1,45 @@
 <script setup>
-import { stringify } from 'querystring';
+import { defineProps } from 'vue'
 
-const props =  defineProps ({
-  name: string,
-  artist: string,
-  img: string
+const props = defineProps({
+  name: String,
+  artist: String,
+  img: String
 })
 </script>
 
 <template>
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img :src="img" class="img-fluid rounded-start" :alt="`${name} - ${artist}`">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body d-flex flex-column justify-content-center">
+          <h5 class="card-title text-center" style="font-family: sans-serif; text-decoration: none">{{ name }}</h5>
+          <p class="card-text text-center" style="font-family: sans-serif; text-decoration: none">{{ artist }}</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
-<style scoped >
+<style scoped>
+.card {
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.card-body {
+  height: 100%;
+}
 </style>
