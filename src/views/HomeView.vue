@@ -15,9 +15,9 @@ onMounted(async () => {
 </script>
 <template>
   <main>
-  <div v-if="podcasts.length">
-    <h2>Top 100 podcasts en Tecnología</h2>
-   <section>
+    <div v-if="podcasts.length">
+      <h2>Top 100 podcasts en Tecnología</h2>
+      <section>
       <div class="col-md-3 col-8" v-for="(podcast, index) in podcasts" :key="podcast['im:name'].label">
         <Router-link :to="`/podcast/${index}`">
           <CardComponent :name="podcast['im:name'].label" :artist="podcast['im:artist'].label" :img="podcast['im:image'][0]['label']" />

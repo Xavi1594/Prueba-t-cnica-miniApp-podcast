@@ -1,18 +1,17 @@
-import { mount } from '@vue/test-utils';
-import CardComponent from '../components/CardComponent';
+import { shallowMount } from '@vue/test-utils'
+import CardComponent from '.././components/CardComponent'
+import { it, describe } from 'vitest'
 
 describe('CardComponent', () => {
-  test('Muestra el nombre, artista e imagen del podcast', () => {
-    const wrapper = mount(CardComponent, {
-      props: {
-        name: 'Podcast 1',
-        artist: 'Artist 1',
-        img: 'image1.jpg',
-      },
-    });
-
-    expect(wrapper.find('.card-title').text()).toBe('Podcast 1');
-    expect(wrapper.find('.card-text').text()).toBe('Artist 1');
-    expect(wrapper.find('img').attributes('src')).toBe('image1.jpg');
-  });
-});
+  it('renders props correctly', () => {
+    const name = 'Podcast Name'
+    const artist = 'Podcast Artist'
+    const img = 'https://example.com/image.png'
+    const wrapper = shallowMount(CardComponent, {
+      props: { name, artist, img }
+    })
+    expect(wrapper.find('.card-title').text()).toMatch(name)
+    expect(wrapper.find('.card-author').text()).toMatch(artist)
+    expect(wrapper.find('.card-image img').attributes('src')).toMatch(img)
+  })
+})

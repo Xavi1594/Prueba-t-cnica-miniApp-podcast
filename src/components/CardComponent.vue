@@ -7,39 +7,70 @@ const props = defineProps({
   img: String
 })
 </script>
-
 <template>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img :src="img" class="img-fluid rounded-start" :alt="`${name} - ${artist}`">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body d-flex flex-column justify-content-center">
-          <h5 class="card-title text-center" style="font-family: sans-serif; text-decoration: none">{{ name }}</h5>
-          <p class="card-text text-center" style="font-family: sans-serif; text-decoration: none">{{ artist }}</p>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-image">
+      <img :src="podcast['im:image'][2].label" alt="Podcast image" />
+    </div>
+    <div class="card-content">
+      <h2 class="card-title">{{ podcast["im:name"].label }}</h2>
+      <p class="card-author">{{ podcast["im:artist"].label }}</p>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style lang="css">
 .card {
-  background-color: white;
-  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 14em;
+  margin-bottom: 4em;
+  text-align: center;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  height: 8em;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  height: 7.5em;
 }
 
 .card-title {
-  font-size: 1.2rem;
+  font-size: 1em;
   font-weight: bold;
+  margin-bottom: 0.5em;
+  max-height: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card-text {
-  font-size: 1rem;
-}
-
-.card-body {
-  height: 100%;
+.card-author {
+  font-size: 0.8em;
+  color: grey;
+  max-height: 1.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
